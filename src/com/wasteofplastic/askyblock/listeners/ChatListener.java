@@ -88,10 +88,10 @@ public class ChatListener implements Listener {
     static {
         LEVELS = new TreeMap<>();
 
-        LEVELS.put(THOUSAND, "k");
-        LEVELS.put(THOUSAND.pow(2), "M");
-        LEVELS.put(THOUSAND.pow(3), "G");
-        LEVELS.put(THOUSAND.pow(4), "T");
+        LEVELS.put(THOUSAND, "Bin");
+        LEVELS.put(THOUSAND.pow(2), "Milyon");
+        LEVELS.put(THOUSAND.pow(3), "Milyar");
+        LEVELS.put(THOUSAND.pow(4), "Trilyon");
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
@@ -108,10 +108,10 @@ public class ChatListener implements Listener {
                 Map.Entry<BigInteger, String> stage = LEVELS.floorEntry(levelValue);
 
                 if (stage != null) { // level > 1000
-                    // 1 052 -> 1.0k
-                    // 1 527 314 -> 1.5M
-                    // 3 874 130 021 -> 3.8G
-                    // 4 002 317 889 -> 4.0T
+                    // 1 052 -> 1.0 Bin
+                    // 1 527 314 -> 1.5 Milyon
+                    // 3 874 130 021 -> 3.8 Milyar
+                    // 4 002 317 889 -> 4.0 Trilyon
                     level = new DecimalFormat("#.#").format(levelValue.divide(stage.getKey().divide(THOUSAND)).doubleValue()/1000.0) + stage.getValue();
                 }
             }
